@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Upload file to IPFS via browser using js-ipfs-http-client
 
-## Available Scripts
+Initial version here:
+https://github.com/ipfs/js-ipfs-http-client/tree/master/examples/upload-file-via-browser
 
-In the project directory, you can run:
+> In this example, you will find a simple React app to upload a file to IPFS via the browser using js-ipfs-http-client and Webpack.
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As for any js-ipfs-http-client example, **you need a running IPFS daemon**, you learn how to do that here:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [Spawn a go-ipfs daemon](https://ipfs.io/docs/getting-started/)
+- [Spawn a js-ipfs daemon](https://github.com/ipfs/js-ipfs#usage)
 
-### `npm test`
+**Note:** If you load your app from a different domain than the one the daemon is running (most probably), you will need to set up CORS, see https://github.com/ipfs/js-ipfs-http-client#cors to learn how to do that.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A quick (and dirty way to get it done) is:
 
-### `npm run build`
+```bash
+> ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
+> ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Run this example
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Once the daemon is on, run the following commands within this folder:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+> npm install
+> npm start
+```
 
-### `npm run eject`
+Now open your browser at `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+After uploading a file (left screen), and opening the uploaded file (right screen), you should see something like:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+> ![App Screenshot](https://github.com/ipfs/js-ipfs-http-client/raw/master/examples/upload-file-via-browser/screenshot.png)
